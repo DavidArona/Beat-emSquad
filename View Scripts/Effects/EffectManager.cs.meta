@@ -1,0 +1,58 @@
+fileFormatVersion: 2
+guid: 470a767240d16164bb79d230257eddf1
+timeCreated: 1524739155
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - strikeWeak: {fileID: 1352208599742726, guid: 709922bc0abe63d4583fc46b2a5ca4d5,
+      type: 2}
+  - strikeStrong: {fileID: 1772151703995198, guid: 327da0eec43bf6b44b1f4d2e6437e904,
+      type: 2}
+  - slashWeak: {fileID: 1758260671204838, guid: 675a8e8424465424b8ba39c08c4e3e14,
+      type: 2}
+  - slashStrong: {fileID: 1562821489653298, guid: 668cea820d3f10f45beb0ac26a5b3a68,
+      type: 2}
+  - stage2Wondie: {fileID: 1138002536173160, guid: b7758987b92532b40837cc5276478848,
+      type: 2}
+  - stage3Wondie: {fileID: 1680847796888620, guid: 48b61b1955234f44eb3a735da548d5cc,
+      type: 2}
+  - stage2Summers: {fileID: 1104918552147982, guid: c55db2c513fb87243b716374540b9429,
+      type: 2}
+  - stage3Summers: {fileID: 1842511961487288, guid: a26ed399e217cdc48a12d6bc6be24c38,
+      type: 2}
+  - stage2X42: {fileID: 1649546645045590, guid: b5b7d10ad849f944e8477aa3dba6f525,
+      type: 2}
+  - stage3X42: {fileID: 1615251840526018, guid: 4c477e41b968f844189b7f26e32f4798,
+      type: 2}
+  - stage2RoninLeft: {fileID: 1245922471402154, guid: 36ee2bc17877937428cd12f4dad37a7e,
+      type: 2}
+  - stage3RoninLeft: {fileID: 1437407750874178, guid: 427ae47f2e7a83640a173aa6793559bc,
+      type: 2}
+  - stage2RoninRight: {fileID: 1044386887665854, guid: d44b8ea7c29c22147b8596e930a410b6,
+      type: 2}
+  - stage3RoninRight: {fileID: 1744824909928840, guid: ea131489e4be76e4584a1258f1e82723,
+      type: 2}
+  - accelLeft: {instanceID: 0}
+  - accelRight: {instanceID: 0}
+  - block: {fileID: 1324196316281464, guid: 3f00a83dc3ccf084a9b30375e1e40a41, type: 2}
+  - brakeLeft: {instanceID: 0}
+  - brakeRight: {fileID: 1693135584959104, guid: 3c10b11ee8e0a9a42ae034bd007ce21b,
+      type: 2}
+  - electrified: {fileID: 1025500190115256, guid: c0e509e24e4f459429ba5f4c2e96cf06,
+      type: 2}
+  - jump: {fileID: 1327224582111470, guid: 3a78cda2c67795f4bb077180e2a37996, type: 2}
+  - landLeft: {fileID: 1352085381742626, guid: 1967b95dad8c7d541b85c14d81c3a695, type: 2}
+  - landRight: {fileID: 1352085381742626, guid: 1967b95dad8c7d541b85c14d81c3a695,
+      type: 2}
+  - blockLeft: {instanceID: 0}
+  - electricWeak: {instanceID: 0}
+  - electricStrong: {instanceID: 0}
+  - nukeExploding: {fileID: 1883831458636052, guid: 65f212ac84322ae48a8cd5e2582ddd6b,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

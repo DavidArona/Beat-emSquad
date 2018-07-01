@@ -1,0 +1,125 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class HitboxManager : MonoBehaviour {
+
+	protected int i, j, k = 0;
+	protected int frameCounter = 0;
+
+	protected BoxCollider[][] hurtBoxes;
+	protected BoxCollider hurtBox;
+	protected BoxCollider prevHurtBox;
+
+	protected BoxCollider[][] hitBoxes;
+	protected BoxCollider hitBox;
+	protected BoxCollider prevHitBox;
+
+	protected BoxCollider[][][] colliders;
+	protected BoxCollider[] boxes;
+	protected BoxCollider[] prevBoxes;
+
+	int collidersCount;
+	protected BoxCollider[] hurtBoxList;
+	protected BoxCollider[] hitBoxList;
+	protected int hurtBoxListSize;
+	protected int hitBoxListSize;
+
+	// Use this for initialization
+	void Start () {
+		
+		hurtBoxes = new BoxCollider[gameObject.transform.childCount][];
+		hitBoxes = new BoxCollider[gameObject.transform.childCount][];
+
+		colliders = new BoxCollider[gameObject.transform.childCount][][];
+
+		//breadth-first search
+		foreach (Transform child in transform) {
+			hurtBoxes [i] = new BoxCollider[child.childCount];
+			hitBoxes [i] = new BoxCollider[child.childCount];
+
+			colliders [i] = new BoxCollider[child.childCount][];
+
+			foreach (Transform grandchild in child) {
+
+				colliders [i][j] = new BoxCollider[grandchild.childCount];
+
+				foreach (Transform colliderType in grandchild) {
+					if (colliderType.tag == "Hurtbox") { 
+						hurtBoxes[i][j] = colliderType.GetComponent<BoxCollider>();
+					}
+					if (colliderType.tag == "Hitbox") {
+						hitBoxes[i][j] = colliderType.GetComponent<BoxCollider>();
+
+					}
+					colliders [i] [j] [k] = colliderType.GetComponent<BoxCollider> ();
+					k++;
+				}
+				j++;
+				k= 0;
+			}
+			i++;
+			j = 0;
+		}
+		i = 0;
+	}
+
+	/*void Start () {
+
+		hurtBoxes = new BoxCollider[gameObject.transform.childCount][];
+		hitBoxes = new BoxCollider[gameObject.transform.childCount][];
+
+		//breadth-first search
+		foreach (Transform child in transform) {
+			hurtBoxes [i] = new BoxCollider[child.childCount];
+			hitBoxes [i] = new BoxCollider[child.childCount];
+			foreach (Transform grandchild in child) {
+				foreach (Transform colliderType in grandchild) {
+					if (colliderType.tag == "Hurtbox") { 
+						hurtBoxes[i][j] = colliderType.GetComponent<BoxCollider>();
+					}
+					if (colliderType.tag == "Hitbox") {
+						hitBoxes[i][j] = colliderType.GetComponent<BoxCollider>();
+					}
+				}
+				j++;
+			}
+			i++;
+			j = 0;
+		}
+		i = 0;
+	}*/
+	public void reverseColliders () {
+		foreach (BoxCollider[][] colliderSet in colliders) {
+			foreach (BoxCollider[] colliderSubSet in colliderSet) {
+				foreach (BoxCollider collider in colliderSubSet) {
+					if (collider != null) {
+						collider.center = new Vector3 (collider.center.x * -1, collider.center.y, collider.center.z);
+					}
+				}
+			}
+		}
+	}
+	/*public void reverseColliders () {
+		foreach (BoxCollider[] colliderSet in hurtBoxes) {
+			foreach (BoxCollider collider in colliderSet) {
+				if (collider != null) {
+					collider.center = new Vector3 (collider.center.x * -1, collider.center.y, collider.center.z);
+				}
+			}
+		}
+		foreach (BoxCollider[] colliderSet in hitBoxes) {
+			foreach (BoxCollider collider in colliderSet) {
+				if (collider != null) {
+					collider.center = new Vector3 (collider.center.x * -1, collider.center.y, collider.center.z);
+				}
+			}
+		}
+	}*/
+
+	protected void enableColliders (BoxCollider[] colliderArray, bool enable) {
+		foreach (BoxCollider collider in colliderArray) {
+			collider.enabled = enable;
+		}
+	}
+}

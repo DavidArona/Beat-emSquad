@@ -1,0 +1,79 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SummersHM : HitboxManager {
+
+	animationsSummers prevAnimation = animationsSummers.clear;
+
+	public enum animationsSummers {
+		clear = -1,
+		idle,
+		run,
+		heavy01Guard,
+		heavy01GuardFinish,
+		heavy01GuardHit,
+		heavy01GuardSpark,
+		heavy01GuardStart,
+		heavy02ArmorSmash,
+		heavy02ChargeSmash2nd,
+		heavy02ChargeStart,
+		heavy02Recover,
+		heavy02WeakSmash,
+		light01FlailFinish,
+		light01FlailingLoop,
+		light01PrepToFlail,
+		light02GroundKissing,
+		light02OnTheEdge,
+		light02WeakPunch,
+		light02WPMiss,
+		heavy03JusticePunchStart,
+		heavy03JusticePunch,
+		heavy03JP1stCharge
+	}
+
+	public void setColliders (animationsSummers animation) {
+		if (animation == animationsSummers.clear) {
+			clearColliders ();
+		} else {
+			setHitBox (animation);
+			setHurtBox (animation);
+			frameCounter++;
+		}
+	}
+
+	public void setHitBox (animationsSummers animation) {
+		if (prevAnimation != animation) {
+			frameCounter = 0;
+			prevAnimation = animation;
+		}
+		hitBox = hitBoxes [(int)animation] [frameCounter];
+		if (hitBox != null) { hitBox.enabled = true; }
+		if (prevHitBox != null) { prevHitBox.enabled = false; }
+		prevHitBox = hitBox;
+	}
+
+	public void setHurtBox (animationsSummers animation) {
+		if (prevAnimation != animation) {
+			frameCounter = 0;
+			prevAnimation = animation;
+		}
+		hurtBox = hurtBoxes [(int)animation] [frameCounter];
+		if (hurtBox != null) { hurtBox.enabled = true; }
+		if (prevHurtBox != null) { prevHurtBox.enabled = false; }
+		prevHurtBox = hurtBox;
+	}
+
+	void clearColliders() {
+		if (prevHurtBox != null) {
+			prevHurtBox.enabled = false;
+		}
+		if (prevHitBox != null) {
+			prevHitBox.enabled = false;
+		}
+		frameCounter = 0;
+		prevAnimation = animationsSummers.clear;
+		hurtBox = null;
+		hitBox = null;
+	}
+}
